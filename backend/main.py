@@ -13,11 +13,6 @@ app = FastAPI()
 UPLOAD_DIR = Path("./uploads")
 UPLOAD_DIR.mkdir(exist_ok=True)
 
-API_KEY = "25417b9e73574c49965cad8f28ab4dd6"
-API_VERSION = "2024-02-01"
-AZURE_ENDPOINT = "https://openaitcuc.openai.azure.com/"
-DEPLOYMENT_NAME = "corpu2-text-embedding-3-large"
-
 @app.post("/analyze-cv/", response_model=CVAnalysisResponse, responses={500: {"model": ErrorResponse}})
 async def analyze_cv(
     file: UploadFile = File(...),
