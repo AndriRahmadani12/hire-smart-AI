@@ -13,6 +13,16 @@ app = FastAPI()
 UPLOAD_DIR = Path("./uploads")
 UPLOAD_DIR.mkdir(exist_ok=True)
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://127.0.0.1:5500"],  # Hanya izinkan frontend tertentu
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 @app.post("/analyze-cv/", response_model=CVAnalysisResponse, responses={500: {"model": ErrorResponse}})
 async def analyze_cv(
     file: UploadFile = File(...),

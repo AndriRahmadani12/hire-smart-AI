@@ -65,6 +65,7 @@ class CVAnalysis:
     def calculate_total_score(self) -> float:
         similarity_score = self.calculate_similarity_score()
         tag_match_score = self.calculate_tag_match_score()
+        print(tag_match_score)
         return (similarity_score + tag_match_score) / 2
 
     def _get_pdf_mean_embedding(self) -> np.ndarray:
