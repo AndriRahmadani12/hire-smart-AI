@@ -18,6 +18,16 @@ API_VERSION = "2024-02-01"
 AZURE_ENDPOINT = "https://openaitcuc.openai.azure.com/"
 DEPLOYMENT_NAME = "corpu2-text-embedding-3-large"
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://127.0.0.1:5500"],  # Hanya izinkan frontend tertentu
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 @app.post("/analyze-cv/", response_model=CVAnalysisResponse, responses={500: {"model": ErrorResponse}})
 async def analyze_cv(
     file: UploadFile = File(...),

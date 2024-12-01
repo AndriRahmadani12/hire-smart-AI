@@ -79,7 +79,6 @@
                         <p class="text-sm text-gray-400 mt-2">PDF files only (MAX. 10MB)</p>
                     </label>
                 </div>
-                <!-- Display selected file name -->
                 <div x-show="selectedFile" class="mt-4 text-gray-700">
                     <p class="font-medium">Selected File:</p>
                     <p x-text="selectedFile.name"></p>
@@ -87,7 +86,6 @@
             </div>
         </div>
 
-        <!-- Analysis Button -->
         <button @click="analyzeResume" 
             class="w-full py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mb-6 transition-all transform hover:scale-[1.02] disabled:opacity-50"
             :disabled="!selectedFile || !jobDescription.trim() || !tags.trim() || processing">
